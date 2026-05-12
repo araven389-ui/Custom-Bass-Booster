@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <p>Downloading your extension icon (ico.png)...</p>
+    
+    <script>
+        async function downloadIcon() {
+            // The source image generated for your extension
+            const imageUrl = 'https://googleusercontent.com/image_generation_content/154'; 
+            
+            try {
+                const response = await fetch(imageUrl);
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
+                
+                // Create a hidden link to trigger the download
+                const a = document.createElement('a');
+                a.style.display = 'none';
+                a.href = url;
+                a.download = 'ico.png'; // Saves exactly as ico.png
+                
+                document.body.appendChild(a);
+                a.click();
+                
+                // Cleanup
+                window.URL.revokeObjectURL(url);
+                console.log("Icon saved successfully as ico.png");
+            } catch (error) {
+                console.error("Download failed:", error);
+            }
+        }
+
+        // Start the process
+        downloadIcon();
+    </script>
+</body>
+</html>
