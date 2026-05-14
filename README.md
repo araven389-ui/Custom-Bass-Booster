@@ -1,2 +1,2 @@
 # Custom-Bass-Booster
-Can be added in extensions :)
+Can Even Added in extensions:)
